@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+#quiz-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.option-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.option-button:hover {
+    background-color: #ddd;
+}
+.correct {
+    background-color: #4CAF50 !important;
+    color: white;
+}
+.incorrect {
+    background-color: #f44336 !important;
+    color: white;
+}
+.hidden {
+    display: none;
+}
