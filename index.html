@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Desafie seus conhecimentos com este quiz interativo! Responda perguntas, acumule pontos e divirta-se.">
     <meta name="keywords" content="quiz, perguntas e respostas, jogo educativo, trivia, conhecimento, desafio">
-    <meta name="author" content="Amanda Ramos Castilho"
+    <meta name="author" content="Amanda Ramos Castilho">
     
     <link rel="icon" href="img/perguntas-frequentes.png" type="image/png">
     <link rel="stylesheet" href="style.css">
@@ -18,13 +18,28 @@
     <div id="quiz-container">
         <h2 id="question">Pergunta aqui</h2>
         <div id="options"></div>
+
+        <!-- Timer -->
+        <p id="timer">⏰ Tempo: 10s</p>
+
+        <!-- Barra de progresso -->
+        <div id="progress-bar" style="width: 100%; background: #eee; height: 10px; border-radius: 10px; margin: 10px 0;">
+            <div id="progress" style="height: 10px; width: 0; background: #4caf50; border-radius: 10px;"></div>
+        </div>
+
         <p id="feedback"></p>
         <button id="next" class="hidden">Próxima</button>
     </div>
 
+    <!-- Resultado final -->
     <p id="score" class="hidden"></p>
+    <p id="best-score" class="hidden"></p>
+
+    <!-- Botão de reinício -->
+    <button id="restart" class="hidden">🔄 Reiniciar Quiz</button>
 
     <script src="js.js"></script>
 
 </body>
 </html>
+
