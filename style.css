@@ -11,6 +11,21 @@ body {
     color: #333;
 }
 
+#start {
+    padding: 10px 20px;
+    margin-bottom: 50px;
+    font-size: 18px;
+    background: linear-gradient(45deg, #045071, #fd6084);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+#start:hover {
+    transform: scale(1.05);
+}
+
 #quiz-container {
     max-width: 480px;
     margin: auto;
