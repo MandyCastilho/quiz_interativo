@@ -118,7 +118,12 @@ restartButton.addEventListener("click", () => {
     loadQuestion();
 });
 
-// Inicia o quiz
-loadQuestion();
+const startButton = document.getElementById("start");
+
+startButton.addEventListener("click", () => {
+    startButton.style.display = "none"; // Esconde o botão de início
+    quizContainer.style.display = "block"; // Mostra o quiz
+    loadQuestion(); // Carrega a primeira pergunta
+});
 
 
