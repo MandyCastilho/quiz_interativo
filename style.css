@@ -1,46 +1,52 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     text-align: center;
-    background-color: #f9f9f9;
+    background: linear-gradient(135deg, #f0f4f8, #e8eef5);
     margin: 0;
-    padding: 20px;
+    padding: 40px 20px;
+    color: #333;
 }
 
 #quiz-container {
-    max-width: 400px;
+    max-width: 480px;
     margin: auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    transition: all 0.3s ease-in-out;
 }
 
 .option-button {
     display: block;
     width: 100%;
-    padding: 10px;
-    margin: 5px 0;
+    padding: 14px;
+    margin: 10px 0;
     cursor: pointer;
     border: none;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    transition: background-color 0.3s, transform 0.2s;
-    font-weight: bold;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    font-weight: 600;
+    color: #333;
+    transition: background 0.3s ease, transform 0.2s;
 }
 
 .option-button:hover {
-    background-color: #ddd;
-    transform: scale(1.02);
+    background: linear-gradient(135deg, #d0dbeb, #bcd2ea);
+    transform: scale(1.03);
 }
 
 .correct {
-    background-color: #4CAF50 !important;
+    background: linear-gradient(135deg, #4CAF50, #81C784) !important;
     color: white;
 }
 
 .incorrect {
-    background-color: #f44336 !important;
+    background: linear-gradient(135deg, #f44336, #e57373) !important;
     color: white;
 }
 
@@ -49,47 +55,50 @@ body {
 }
 
 #feedback {
-    margin-top: 10px;
-    font-weight: bold;
+    margin-top: 15px;
+    font-weight: 600;
     font-size: 1.1em;
 }
 
 #next, #restart {
-    margin-top: 15px;
-    padding: 10px 20px;
+    margin-top: 20px;
+    padding: 12px 24px;
     font-size: 1em;
+    font-weight: 600;
     border: none;
-    border-radius: 5px;
-    background-color: #2196F3;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2196F3, #64B5F6);
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background 0.3s ease;
 }
 
 #next:hover, #restart:hover {
-    background-color: #0b7dda;
+    background: linear-gradient(135deg, #1976D2, #42A5F5);
 }
 
 #score, #best-score {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-top: 20px;
+    font-size: 1.3em;
+    font-weight: 700;
+    margin-top: 25px;
+    color: #444;
 }
 
 #timer {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 1.2em;
-    margin-top: 10px;
-    color: #ff5722;
+    margin-top: 15px;
+    color: #FF7043;
 }
 
 #progress-bar {
     width: 100%;
-    background: #eee;
-    height: 10px;
-    border-radius: 10px;
+    background: #e0e0e0;
+    height: 12px;
+    border-radius: 20px;
     overflow: hidden;
-    margin-top: 10px;
+    margin-top: 15px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 #progress {
@@ -97,5 +106,6 @@ body {
     width: 0;
     background: linear-gradient(90deg, #4CAF50, #8BC34A);
     transition: width 0.5s ease-in-out;
-    border-radius: 10px;
+    border-radius: 20px;
 }
+
