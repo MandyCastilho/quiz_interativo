@@ -6,6 +6,8 @@ const questions = [
 
 let currentQuestionIndex = 0;
 let score = 0;
+let timer;
+let timeLeft = 10; // tempo por pergunta em segundos
 
 const questionElement = document.getElementById("question");
 const optionsElement = document.getElementById("options");
@@ -13,6 +15,10 @@ const nextButton = document.getElementById("next");
 const scoreElement = document.getElementById("score");
 const feedbackElement = document.getElementById("feedback");
 const quizContainer = document.getElementById("quiz-container");
+const timerElement = document.getElementById("timer"); // <span id="timer">
+const progressElement = document.getElementById("progress"); // <div id="progress">
+const restartButton = document.getElementById("restart"); // <button id="restart">Reiniciar</button>
+const bestScoreElement = document.getElementById("best-score"); // <div id="best-score">
 
 function loadQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
@@ -30,12 +36,15 @@ function loadQuestion() {
     });
 
     nextButton.classList.add("hidden");
+
+    updateProgressBar();
+    startTimer();
 }
 
 function checkAnswer(button, selectedOption) {
-    const correctAnswer = questions[currentQuestionIndex].answer;
+    clearInterval(timer); // para o cronômetro ao responder
 
-    // Desativa todos os botões após resposta
+    const correctAnswer = questions[currentQuestionIndex].answer;
     document.querySelectorAll(".option-button").forEach(btn => btn.disabled = true);
 
     if (selectedOption === correctAnswer) {
@@ -59,11 +68,53 @@ nextButton.addEventListener("click", () => {
     }
 });
 
+restartButton.addEventListener("click", () => {
+    currentQuestionIndex = 0;
+    score = 0;
+    scoreElement.classList.add("hidden");
+    quizContainer.classList.remove("hidden");
+    restartButton.classList.add("hidden");
+    bestScoreElement.classList.add("hidden");
+    loadQuestion();
+});
+
 function showScore() {
     quizContainer.classList.add("hidden");
     scoreElement.textContent = `Você acertou ${score} de ${questions.length} perguntas.`;
     scoreElement.classList.remove("hidden");
+
+    // Verifica e salva o melhor score
+    const bestScore = localStorage.getItem("bestScore") || 0;
+    if (score > bestScore) {
+        localStorage.setItem("bestScore", score);
+        bestScoreElement.textContent = `🎉 Novo recorde: ${score} acertos!`;
+    } else {
+        bestScoreElement.textContent = `🏆 Melhor pontuação: ${bestScore} acertos.`;
+    }
+
+    bestScoreElement.classList.remove("hidden");
+    restartButton.classList.remove("hidden");
 }
 
-// Carregar a primeira pergunta
-loadQuestion();
+function startTimer() {
+    timeLeft = 10;
+    timerElement.textContent = `⏰ Tempo: ${timeLeft}s`;
+
+    timer = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = `⏰ Tempo: ${timeLeft}s`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            feedbackElement.textContent = "⏱️ Tempo esgotado!";
+            document.querySelectorAll(".option-button").forEach(btn => btn.disabled = true);
+            nextButton.classList.remove("hidden");
+        }
+    }, 1000);
+}
+
+function updateProgressBar() {
+    const percent = ((currentQuestionIndex + 1) / questions.length) * 100;
+    progressElement.style.width = percent + "%";
+}
+
