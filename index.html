@@ -15,35 +15,20 @@
 
 <body>
 
-    <button id="start">Iniciar Quiz</button>
+    <div class="quiz-container">
+      <h1>Quiz Interativo ⚡</h1>
 
-    <div id="quiz-container" style="display: none;">
-        <h2 id="question">Pergunta aqui</h2>
-        <div id="options"></div>
+      <div id="question-container">
+        <p id="question">Carregando pergunta...</p>
+        <div id="answers"></div>
+      </div>
 
-        <!-- Timer -->
-        <p id="timer">⏰ Tempo: 10s</p>
-
-        <!-- Barra de progresso -->
-        <div id="progress-bar" style="width: 100%; background: #eee; height: 10px; border-radius: 10px; margin: 10px 0;">
-            <div id="progress" style="height: 10px; width: 0; background: #4caf50; border-radius: 10px;"></div>
-        </div>
-
-        <p id="feedback"></p>
-        <button id="next" class="hidden">Próxima</button>
-        <button id="skip">Pular</button>
+      <button id="next-btn" class="hide">Próxima</button>
+      <div id="score" class="hide"></div>
     </div>
-
-    <!-- Resultado final -->
-    <p id="score" class="hidden"></p>
-    <p id="best-score" class="hidden"></p>
-
-    <!-- Botão de reinício -->
-    <button id="restart" class="hidden">🔄 Reiniciar Quiz</button>
-
+  
     <script src="js.js"></script>
-
-</body>
-</html>
+  </body>
+  </html>
 
 
