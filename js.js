@@ -20,13 +20,17 @@ const timerElement = document.getElementById("timer");
 const progressBar = document.getElementById("progress");
 const bestScoreElement = document.getElementById("best-score");
 const restartButton = document.getElementById("restart");
+const skipButton = document.getElementById("skip");
+const timeProgressBar = document.getElementById("time-progress");
 
 function startTimer() {
     timeLeft = 10;
     timerElement.textContent = `⏰ Tempo: ${timeLeft}s`;
+    updateTimeProgress();
     timer = setInterval(() => {
         timeLeft--;
         timerElement.textContent = `⏰ Tempo: ${timeLeft}s`;
+        updateTimeProgress();
 
         if (timeLeft <= 0) {
             clearInterval(timer);
@@ -37,9 +41,16 @@ function startTimer() {
     }, 1000);
 }
 
+function updateTimeProgress() {
+    const percent = (timeLeft / 10) * 100;
+    timeProgressBar.style.width = `${percent}%`;
+    timeProgressBar.style.backgroundColor = percent <= 30 ? "red" : percent <= 60 ? "orange" : "green";
+}
+
 function updateProgressBar() {
     const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
     progressBar.style.width = `${progress}%`;
+    progressBar.textContent = `Pergunta ${currentQuestionIndex + 1} de ${questions.length}`;
 }
 
 function loadQuestion() {
@@ -91,10 +102,32 @@ nextButton.addEventListener("click", () => {
     }
 });
 
+skipButton.addEventListener("click", () => {
+    clearInterval(timer);
+    feedbackElement.textContent = `➡️ Você pulou! A resposta certa era: ${questions[currentQuestionIndex].answer}`;
+    document.querySelectorAll(".option-button").forEach(btn => btn.disabled = true);
+    nextButton.classList.remove("hidden");
+});
+
 function showScore() {
     quizContainer.classList.add("hidden");
     scoreElement.textContent = `Você acertou ${score} de ${questions.length} perguntas.`;
     scoreElement.classList.remove("hidden");
+
+    let message;
+    const percentage = (score / questions.length) * 100;
+
+    if (percentage === 100) {
+        message = "👑 Perfeição! Você arrasou demais!";
+    } else if (percentage >= 70) {
+        message = "🔥 Mandou muito bem!";
+    } else if (percentage >= 40) {
+        message = "💪 Quase lá! Bora praticar mais.";
+    } else {
+        message = "😅 Tá na hora de estudar mais um pouquinho.";
+    }
+
+    feedbackElement.textContent = message;
 
     if (score > bestScore) {
         bestScore = score;
@@ -109,13 +142,16 @@ function showScore() {
 }
 
 restartButton.addEventListener("click", () => {
-    currentQuestionIndex = 0;
-    score = 0;
-    quizContainer.classList.remove("hidden");
-    scoreElement.classList.add("hidden");
-    bestScoreElement.classList.add("hidden");
-    restartButton.classList.add("hidden");
-    loadQuestion();
+    if (confirm("Deseja realmente reiniciar o quiz?")) {
+        currentQuestionIndex = 0;
+        score = 0;
+        quizContainer.classList.remove("hidden");
+        scoreElement.classList.add("hidden");
+        bestScoreElement.classList.add("hidden");
+        restartButton.classList.add("hidden");
+        feedbackElement.textContent = "";
+        loadQuestion();
+    }
 });
 
 const startButton = document.getElementById("start");
@@ -125,5 +161,6 @@ startButton.addEventListener("click", () => {
     quizContainer.style.display = "block"; // Mostra o quiz
     loadQuestion(); // Carrega a primeira pergunta
 });
+
 
 
