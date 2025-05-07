@@ -60,9 +60,19 @@ body {
     color: white;
 }
 
+.correct::before {
+    content: "✅";
+    margin-right: 10px;
+}
+
 .incorrect {
     background: linear-gradient(135deg, #f44336, #e57373) !important;
     color: white;
+}
+
+.incorrect::before {
+    content: "❌";
+    margin-right: 10px;
 }
 
 .hidden {
@@ -85,11 +95,12 @@ body {
     background: linear-gradient(135deg, #2196F3, #64B5F6);
     color: white;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 #next:hover, #restart:hover {
     background: linear-gradient(135deg, #1976D2, #42A5F5);
+    transform: scale(1.05);
 }
 
 #score, #best-score {
@@ -109,7 +120,7 @@ body {
 #progress-bar {
     width: 100%;
     background: #e0e0e0;
-    height: 12px;
+    height: 20px; /* Aumentei a altura para 20px */
     border-radius: 20px;
     overflow: hidden;
     margin-top: 15px;
@@ -123,4 +134,5 @@ body {
     transition: width 0.5s ease-in-out;
     border-radius: 20px;
 }
+
 
