@@ -21,12 +21,21 @@ let score = 0;
 let timer;
 const timeLimit = 15;
 
+const startBtn = document.getElementById("start-btn");
+const startScreen = document.getElementById("start-screen");
+const quizContainer = document.getElementById("quiz-container");
 const questionElement = document.getElementById("question");
 const answersElement = document.getElementById("answers");
 const nextButton = document.getElementById("next-btn");
 const scoreElement = document.getElementById("score");
 const progressBar = document.getElementById("progress-bar");
 const timerElement = document.getElementById("timer");
+
+startBtn.addEventListener("click", () => {
+  startScreen.classList.add("hide");
+  quizContainer.classList.remove("hide");
+  startQuiz();
+});
 
 function startQuiz() {
   currentQuestionIndex = 0;
@@ -160,7 +169,8 @@ async function exportToPDF() {
 
 nextButton.addEventListener("click", () => {
   if (nextButton.textContent === "Jogar novamente") {
-    startQuiz();
+    startScreen.classList.remove("hide");
+    quizContainer.classList.add("hide");
     return;
   }
   currentQuestionIndex++;
@@ -170,8 +180,6 @@ nextButton.addEventListener("click", () => {
     showScore();
   }
 });
-
-startQuiz();
   
   
   
