@@ -1,45 +1,84 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f2f2f2;
-  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #ffffff, #eaeaea);
+  color: #2c2c2c;
   padding: 20px;
   max-width: 600px;
   margin: auto;
+  transition: background 0.3s, color 0.3s;
 }
+
 .dark-mode {
-  background: #1c1c1c;
-  color: #f2f2f2;
+  background: linear-gradient(to bottom, #1e1e1e, #121212);
+  color: #f5f5f5;
 }
+
 button {
   display: block;
   margin: 10px 0;
-  padding: 10px;
+  padding: 12px 16px;
   width: 100%;
   border: none;
-  border-radius: 5px;
-  background: #007bff;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #009dff, #006dcc);
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
   color: white;
   font-size: 16px;
   cursor: pointer;
+  transition: transform 0.1s, background 0.3s;
 }
-button.correct { background: #28a745; }
-button.wrong { background: #dc3545; }
+
+button:hover {
+  transform: scale(1.02);
+}
+
+button.correct {
+  background: linear-gradient(145deg, #45d16c, #239c4a);
+}
+
+button.wrong {
+  background: linear-gradient(145deg, #e85b61, #c13f45);
+}
+
 #progress-container {
-  background: #ccc;
-  height: 10px;
-  margin: 15px 0;
+  background: #ddd;
+  height: 12px;
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
 }
+
 #progress-bar {
-  height: 10px;
-  background: #28a745;
+  height: 12px;
+  background: #4caf50;
   width: 0%;
+  transition: width 0.3s;
 }
-.hide { display: none; }
+
+.hide {
+  display: none;
+}
+
 input[type="text"] {
-  padding: 8px;
+  padding: 10px;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 12px;
   box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.dark-mode input[type="text"] {
+  background-color: #2b2b2b;
+  border: 1px solid #444;
+  color: #f5f5f5;
 }
 
 

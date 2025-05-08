@@ -124,8 +124,6 @@ function showScore() {
     <input type="text" id="player-name" placeholder="Seu nome" />
     <button onclick="saveRanking()">Salvar pontuação</button>
     <div id="ranking"></div>
-    <button onclick="exportToPDF()">📄 Exportar PDF</button>
-    <a id="whatsapp-share" target="_blank">📲 Compartilhar no WhatsApp</a>
   `;
   scoreElement.classList.remove("hide");
   nextButton.textContent = "Jogar novamente";
@@ -149,22 +147,6 @@ function showRanking() {
   container.innerHTML = "<h3>🏆 Ranking:</h3><ol>" + 
     ranking.map(player => `<li>${player.name} - ${player.score}</li>`).join("") + 
     "</ol>";
-}
-
-function generateWhatsAppLink(name, score) {
-  const msg = `Olá! Eu, ${name}, fiz ${score} pontos no Quiz! 💡`;
-  const link = `https://wa.me/?text=${encodeURIComponent(msg)}`;
-  document.getElementById("whatsapp-share").href = link;
-}
-
-async function exportToPDF() {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  const name = document.getElementById("player-name").value || "Anônimo";
-  doc.text(`Resultado do Quiz`, 10, 10);
-  doc.text(`Nome: ${name}`, 10, 20);
-  doc.text(`Pontuação: ${score} / ${questions.length}`, 10, 30);
-  doc.save("resultado-quiz.pdf");
 }
 
 nextButton.addEventListener("click", () => {
