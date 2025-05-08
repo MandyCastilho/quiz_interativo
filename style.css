@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(to bottom, #fff538, #ffb300);
@@ -17,6 +19,12 @@ body {
   background-color: rgba(255, 255, 255, 0.1); /* opcional: para contraste no modo escuro */
   padding: 20px;
   border-radius: 12px;
+}
+
+#start-screen p {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 button {
@@ -87,6 +95,8 @@ input[type="text"]:focus {
   outline: none;
   background-color: #fffac1;
 }
+
+/* DARK MODE */
 
 .dark-mode input[type="text"] {
   background-color: #1f1f1f;
