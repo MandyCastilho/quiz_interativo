@@ -12,8 +12,6 @@ Projeto criado com foco em **lógica de programação**, **manipulação do DOM*
 ⏳ Sistema de tempo por pergunta  
 🏆 Ranking salvo automaticamente  
 
-> 📌 *Adicione prints ou GIFs aqui para deixar o projeto ainda mais profissional.*
-
 ---
 
 ## 🚀 Funcionalidades
@@ -115,7 +113,7 @@ O ranking utiliza **`localStorage`** para persistência de dados.
 ## 🧑‍💻 Autora
 
 **Amanda Ramos Castilho**  
-🎓 Estudante de Análise e Desenvolvimento de Sistemas  
+🎓 Formada em Análise e Desenvolvimento de Sistemas  
 
 📌 Projeto desenvolvido para prática de:
 - JavaScript
